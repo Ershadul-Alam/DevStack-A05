@@ -1,6 +1,13 @@
+import { use } from "react";
+import type { techTypes } from "../types/techTypes";
 
+interface techProps{
+    techPromise: Promise<techTypes[]>
+}
 
-const Technologies = () => {
+const Technologies = ({techPromise}:  techProps) => {
+    const technologies = use(techPromise);
+    console.log(technologies);
     return (
         <div className="container mx-auto">
             <h3 className="font-extrabold text-3xl">
