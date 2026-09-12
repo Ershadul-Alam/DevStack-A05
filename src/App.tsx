@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import Banner from "./components/Banner"
 import Nav from "./components/Nav"
-import Technologies from "./components/Technologies"
+import Technologies from "./components/technologies/Technologies"
 import type { techTypes } from "./types/techTypes";
 
 const techFetch = async(): Promise<techTypes[]> => {
