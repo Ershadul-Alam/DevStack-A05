@@ -1,14 +1,16 @@
-import {type Dispatch, type SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import type { techTypes } from "../../types/techTypes";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 interface techCardsProp {
     technology: techTypes;
-    selectedTech : techTypes[];
-    setselectedTech : Dispatch<SetStateAction<techTypes[]>>
+    selectedTech: techTypes[];
+    setselectedTech: Dispatch<SetStateAction<techTypes[]>>
 }
 
 
-const TechCards = ({ technology, selectedTech, setselectedTech}: techCardsProp) => {
+const TechCards = ({ technology, selectedTech, setselectedTech }: techCardsProp) => {
 
 
     const isAdded = selectedTech.some((tech) => tech.id === technology.id);
@@ -69,15 +71,25 @@ const TechCards = ({ technology, selectedTech, setselectedTech}: techCardsProp) 
             </div>
 
             {/* Action Button */}
-            <button 
-            onClick={() => {
-                setselectedTech([...selectedTech, technology]);
-                setIsAdded(true);
-            }} //selected tech logic
-            disabled={isAdded}
-            className="w-full bg-[#0a0f1c] hover:bg-[#1e293b] cursor-pointer text-white font-sans py-2 rounded-full transition-colors duration-200 text-[15px] border border-transparent disabled:bg-rose-50 disabled:text-rose-600 disabled:border-rose-200 disabled:cursor-not-allowed"
+            <button
+                onClick={() => {
+                    setselectedTech([...selectedTech, technology]);
+                    setIsAdded(true);
+                }} //selected tech logic
+                disabled={isAdded}
+                className="w-full bg-[#0a0f1c] hover:bg-[#1e293b] cursor-pointer text-white font-sans py-2 rounded-full transition-colors duration-200 text-[15px] border border-transparent disabled:bg-rose-50 disabled:text-rose-600 disabled:border-rose-200 disabled:cursor-not-allowed"
             >
-                {isAdded ? "Added to Stack" : "Add to Stack"}
+                {isAdded ? (
+                    <>
+                        <FontAwesomeIcon
+                            icon={faCheck}
+                            style={{ color: "hsl(329, 100%, 45%)" }}
+                        />
+                        Added to Stack
+                    </>
+                ) : (
+                    "Add to Stack"
+                )}
             </button>
 
         </div>

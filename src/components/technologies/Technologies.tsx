@@ -15,7 +15,7 @@ const Technologies = ({ techPromise }: techProps) => {
     
 
     return (
-        <div>
+        <div className="pb-18">
 
             {/* Header */}
             <div className="container mx-auto">

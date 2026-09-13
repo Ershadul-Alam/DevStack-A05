@@ -6,7 +6,7 @@ const Nav = () => {
             <div className="flex justify-between container mx-auto items-center py-1.5">
                 <img src="/public/logo-text.png" alt="logo" />
                 <ul className="flex justify-between gap-4 font-light text-sm">
-                    <li>Home</li>
+                    <li className="text-pink-600">Home</li>
                     <li>Technologies</li>
                     <li>Projects</li>
                     <li>About</li>
