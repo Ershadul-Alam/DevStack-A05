@@ -8,7 +8,7 @@ import type { techTypes } from "./types/techTypes";
 import Footer from "./components/Footer";
 
 const techFetch = async(): Promise<techTypes[]> => {
-  const res = await fetch("/public/data.json");
+  const res = await fetch("/data.json");
   const data = await res.json();
   return data;
 }

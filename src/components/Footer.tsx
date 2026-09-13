@@ -5,7 +5,7 @@ const Footer = () => {
         <footer className="border-t border-slate-100">
         <div className="grid grid-cols-4 py-11  items-center justify-items-center container mx-auto">
             <div>
-                <img src="/public/logo-text.png" alt="" />
+                <img src="/logo-text.png" alt="" />
                 <p className="text-slate-500 text-xs font-light pt-3 pb-4.5">
                     Curated tools, technologies, and resources 
                     for developers building modern software.

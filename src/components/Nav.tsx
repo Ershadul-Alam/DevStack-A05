@@ -4,7 +4,7 @@ const Nav = () => {
     return (
         <div className="sticky top-0 z-50 w-full bg-white shadow-sm">
             <div className="flex justify-between container mx-auto items-center py-1.5">
-                <img src="/public/logo-text.png" alt="logo" />
+                <img src="/logo-text.png" alt="logo" />
                 <ul className="flex justify-between gap-4 font-light text-sm">
                     <li className="text-pink-600">Home</li>
                     <li>Technologies</li>

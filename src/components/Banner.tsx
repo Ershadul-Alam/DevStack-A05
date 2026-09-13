@@ -22,7 +22,7 @@ const Banner = () => {
                     >Learn More</button>
                 </div>
             </div>
-            <img src="/public/banner-stack.png" alt="Banner Stack" />
+            <img src="/banner-stack.png" alt="Banner Stack" />
         </div>
     );
 };
