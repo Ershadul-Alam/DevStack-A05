@@ -2,6 +2,7 @@ import { type Dispatch, type SetStateAction } from "react";
 import type { techTypes } from "../../types/techTypes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { Bounce, toast } from "react-toastify";
 
 interface techCardsProp {
     technology: techTypes;
@@ -74,7 +75,17 @@ const TechCards = ({ technology, selectedTech, setselectedTech }: techCardsProp)
             <button
                 onClick={() => {
                     setselectedTech([...selectedTech, technology]);
-                    setIsAdded(true);
+                    toast.success(`${technology.name} Added to Stack`, {
+                        position: "top-left",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    });
                 }} //selected tech logic
                 disabled={isAdded}
                 className="w-full bg-[#0a0f1c] hover:bg-[#1e293b] cursor-pointer text-white font-sans py-2 rounded-full transition-colors duration-200 text-[15px] border border-transparent disabled:bg-rose-50 disabled:text-rose-600 disabled:border-rose-200 disabled:cursor-not-allowed"

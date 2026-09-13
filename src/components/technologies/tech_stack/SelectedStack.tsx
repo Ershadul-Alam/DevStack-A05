@@ -1,7 +1,8 @@
-import { useState, type Dispatch, type SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import type { techTypes } from "../../../types/techTypes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { Bounce, toast } from "react-toastify";
 
 interface selectedStackProp {
     selectedTech: techTypes[];
@@ -10,10 +11,10 @@ interface selectedStackProp {
 
 
 const SelectedStack = ({ selectedTech, setselectedTech }: selectedStackProp) => {
-    console.log(selectedTech, "from SelectedStack");
 
-    const handleRemoveTech = (technology:techTypes) =>{
-        const restTech = selectedTech.filter((card)=> card.name !== technology.name);
+
+    const handleRemoveTech = (technology: techTypes) => {
+        const restTech = selectedTech.filter((card) => card.name !== technology.name);
         setselectedTech(restTech);
     }
 
@@ -45,19 +46,52 @@ const SelectedStack = ({ selectedTech, setselectedTech }: selectedStackProp) => 
                             </span>
                         </div>
                     </div>
-                    {/* Right side: Close (X) Button */}
-                    <FontAwesomeIcon 
-                    icon={faXmark} 
-                    className="cursor-pointer"
-                    onClick={()=> {
-                        handleRemoveTech(technology);
-                    }
-                    }
+                    {/* Right side (X) Button */}
+                    <FontAwesomeIcon
+                        icon={faXmark}
+                        className="cursor-pointer"
+                        onClick={() => {
+                            handleRemoveTech(technology);
+                            toast.info(`${technology.name} Removed from Stack`, {
+                                position: "top-left",
+                                autoClose: 5000,
+                                hideProgressBar: false,
+                                closeOnClick: false,
+                                pauseOnHover: true,
+                                draggable: true,
+                                progress: undefined,
+                                theme: "light",
+                                transition: Bounce,
+                            });
+                        }
+                        }
                     />
-                    
+
 
                 </div>
             ))}
+
+            <button
+                onClick={() => {
+                    setselectedTech([]);
+                    toast.warn("Removed All from Stack", {
+                        position: "top-left",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    });
+                }}
+                className={"w-full text-center py-2 px-12 mt-2 rounded-[20px] font-sans text-[15px] text-[#cd4a48] bg-white border border-[#fddede] hover:bg-[#fff5f5] hover:border-[#ffdada] transition-colors focus:outline-none focus:ring-2 focus:ring-rose-100"}
+                aria-label="Remove all selected technologies"
+            >
+                Remove All
+            </button>
+
         </div>
     );
 };
