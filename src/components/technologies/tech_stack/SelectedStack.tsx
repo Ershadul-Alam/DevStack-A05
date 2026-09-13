@@ -1,5 +1,7 @@
-import type { Dispatch, SetStateAction } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import type { techTypes } from "../../../types/techTypes";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 interface selectedStackProp {
     selectedTech: techTypes[];
@@ -9,6 +11,14 @@ interface selectedStackProp {
 
 const SelectedStack = ({ selectedTech, setselectedTech }: selectedStackProp) => {
     console.log(selectedTech, "from SelectedStack");
+
+    const handleRemoveTech = (technology:techTypes) =>{
+        const restTech = selectedTech.filter((card)=> card.name !== technology.name);
+        setselectedTech(restTech);
+    }
+
+    // const [isRemoved, setIsRemoved] = useState(false)
+
     return (
         <div>
             {selectedTech.map((technology) => (
@@ -35,23 +45,16 @@ const SelectedStack = ({ selectedTech, setselectedTech }: selectedStackProp) => 
                             </span>
                         </div>
                     </div>
-
                     {/* Right side: Close (X) Button */}
-                    {/* <button
-                        onClick={onRemove}
-                        className="text-slate-400 hover:text-slate-700 transition-colors duration-200"
-                        aria-label={`Remove ${technology.name}`}
-                    >
-                        <svg
-                            className="w-[22px] h-[22px]"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.75"
-                        >
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button> */}
+                    <FontAwesomeIcon 
+                    icon={faXmark} 
+                    className="cursor-pointer"
+                    onClick={()=> {
+                        handleRemoveTech(technology);
+                    }
+                    }
+                    />
+                    
 
                 </div>
             ))}

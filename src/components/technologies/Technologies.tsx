@@ -12,6 +12,8 @@ const Technologies = ({ techPromise }: techProps) => {
 
     const [selectedTech, setselectedTech] = useState<techTypes[]>([]);
 
+    
+
     return (
         <div>
 
@@ -29,7 +31,9 @@ const Technologies = ({ techPromise }: techProps) => {
                     {
                         technologies.map((technology: techTypes) => {
                             return <div key={technology.id}>
-                                <TechCards technology={technology} selectedTech={selectedTech} setselectedTech={setselectedTech} />
+                                <TechCards technology={technology} 
+                                selectedTech={selectedTech} setselectedTech={setselectedTech} 
+                                />
                             </div>
                         })
                     }

@@ -1,6 +1,5 @@
-import type { Dispatch, SetStateAction } from "react";
+import {type Dispatch, type SetStateAction } from "react";
 import type { techTypes } from "../../types/techTypes";
-import SelectedStack from "./tech_stack/SelectedStack";
 
 interface techCardsProp {
     technology: techTypes;
@@ -9,8 +8,10 @@ interface techCardsProp {
 }
 
 
-const TechCards = ({ technology, selectedTech, setselectedTech }: techCardsProp) => {
+const TechCards = ({ technology, selectedTech, setselectedTech}: techCardsProp) => {
 
+
+    const isAdded = selectedTech.some((tech) => tech.id === technology.id);
 
     return (
         <div className="max-w-75 w-full bg-white border border-gray-100 rounded-4xl p-4.5 my-2 shadow-[0_4px_24px_-8px_rgba(0,0,0,0.04)] font-sans">
@@ -69,9 +70,14 @@ const TechCards = ({ technology, selectedTech, setselectedTech }: techCardsProp)
 
             {/* Action Button */}
             <button 
-            onClick={() => setselectedTech([...selectedTech, technology])} //selected tech logic
-            className="w-full bg-[#0a0f1c] hover:bg-[#1e293b] text-white font-sans py-2 rounded-[14px] transition-colors duration-200 text-[15px]">
-                Add to Stack
+            onClick={() => {
+                setselectedTech([...selectedTech, technology]);
+                setIsAdded(true);
+            }} //selected tech logic
+            disabled={isAdded}
+            className="w-full bg-[#0a0f1c] hover:bg-[#1e293b] cursor-pointer text-white font-sans py-2 rounded-full transition-colors duration-200 text-[15px] border border-transparent disabled:bg-rose-50 disabled:text-rose-600 disabled:border-rose-200 disabled:cursor-not-allowed"
+            >
+                {isAdded ? "Added to Stack" : "Add to Stack"}
             </button>
 
         </div>

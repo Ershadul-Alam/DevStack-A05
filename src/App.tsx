@@ -1,5 +1,7 @@
 import { Suspense } from "react";
 import Banner from "./components/Banner"
+// @ts-expect-error Loading is a JavaScript component without TypeScript declarations.
+import Loading from "./components/Loading"
 import Nav from "./components/Nav"
 import Technologies from "./components/technologies/Technologies"
 import type { techTypes } from "./types/techTypes";
@@ -17,7 +19,7 @@ function App() {
     <>
       <Nav />
       <Banner />
-      <Suspense fallback={<h2>Loading...</h2>}>
+      <Suspense fallback={<Loading />}>
       <Technologies techPromise={techPromise}/>
       </Suspense>
     </>

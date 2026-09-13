@@ -2,8 +2,8 @@
 
 const Nav = () => {
     return (
-        <div>
-            <div className="flex justify-between container mx-auto sticky top-0 z-50 mt-1 items-center">
+        <div className="sticky top-0 z-50 w-full bg-white shadow-sm">
+            <div className="flex justify-between container mx-auto items-center py-1.5">
                 <img src="/public/logo-text.png" alt="logo" />
                 <ul className="flex justify-between gap-4 font-light text-sm">
                     <li>Home</li>
